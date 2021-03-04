@@ -8,18 +8,18 @@ jobs:
   # when a job name is not provided
   super-lint:
     # Name the Job
-    name: Lint code base
+    name: Lint code
     # Set the type of machine to run on
-    runs-on: ubuntu-latest
+    runs-on: make lint
 
-    steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
-      - name: Checkout code
-        uses: actions/checkout@v2
+    # steps:
+    #   # Checks out a copy of your repository on the ubuntu-latest machine
+    #   - name: Checkout code
+    #     uses: actions/checkout@v2
 
-      # Runs the Super-Linter action
-      - name: Run Super-Linter
-        uses: github/super-linter@v3
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   # Runs the Super-Linter action
+    #   - name: Run Super-Linter
+    #     uses: github/super-linter@v3
+    #     env:
+    #       DEFAULT_BRANCH: main
+    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
