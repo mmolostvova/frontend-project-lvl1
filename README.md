@@ -6,3 +6,6 @@
 
 ## Github Actions
 <a href="https://github.com/mmolostvova/frontend-project-lvl1/.github/workflows/superlinter.yml/badge.svg"></a>
+
+## Brain Even Game
+asciinema play /var/folders/my/wyt6jpn97cd6x84v4v6kyr_40000gn/T/tmphkjsqwja-ascii.cast
