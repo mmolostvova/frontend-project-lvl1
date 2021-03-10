@@ -25,10 +25,19 @@ export default () => {
     const n2 = getRandomNumber();
     const op = getRandomOperation();
     const q = `Question: ${n1} ${op} ${n2}`;
-    const rightAnswer = n1 op n2; // здесь не понимаю как произвести операцию
+    let rightAnswer;
+    switch (op) {
+      case '+': rightAnswer = n1 + n2;
+        break;
+      case '-': rightAnswer = n1 - n2;
+        break;
+      case '*': rightAnswer = n1 * n2;
+        break;
+      default:
+    }
     const userAnswer = readline.question(q);
     console.log(`Your answer: ${userAnswer}`);
-    if (userAnswer === rightAnswer) {
+    if (parseInt(userAnswer, 10) === rightAnswer) {
       console.log('Correct!');
       winsCounter += 1;
     } else {
