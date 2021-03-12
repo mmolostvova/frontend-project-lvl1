@@ -2,9 +2,11 @@
 import { welcomeMessage, showRules, gameFlow } from '../index.js';
 
 export default () => {
-  welcomeMessage('Welcome to the Brain Games!', 'May I have your name? ');
+  const name = welcomeMessage('Welcome to the Brain Games!', 'May I have your name? ');
   showRules('Answer "yes" if the number is even, otherwise answer "no".');
-  gameFlow() // тут еще не дописала
+  const randomNumber = Math.floor(Math.random() * 101);
+  const rightAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
+  gameFlow(randomNumber, rightAnswer, name);
 };
 
 // export default () => {
