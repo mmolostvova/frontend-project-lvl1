@@ -17,6 +17,19 @@ export const askQgetA = (question) => {
   return userAnswer;
 };
 
-export function isAnswerRight(userAnswer, rightAnswer) {
-  return userAnswer === rightAnswer;
+export function isAnswerRight(userAnswer, rightAnswer, userName, n = 0) {
+  let winsCounter = n;
+  if (userAnswer === rightAnswer) {
+    console.log('Correct!');
+    winsCounter += 1;
+  } else {
+    console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
+    winsCounter = 0;
+  }
+  return winsCounter;
 }
+
+export const getRandomNumber = (n) => {
+  const randomNumber = Math.floor(Math.random() * n);
+  return randomNumber;
+};

@@ -1,5 +1,5 @@
 import {
-  welcomeMessage, showRules, askQgetA, isAnswerRight,
+  welcomeMessage, showRules, askQgetA, isAnswerRight, getRandomNumber,
 } from '../index.js';
 
 export default () => {
@@ -7,20 +7,12 @@ export default () => {
   showRules('What is the result of the expression?');
   let winsCounter = 0;
   const operations = ['+', '-', '*'];
-  const getRandomOperation = () => {
-    const randomIndex = Math.floor(Math.random() * 3);
-    return operations[randomIndex];
-  };
-  const getRandomNumber = () => {
-    const randomNumber = Math.floor(Math.random() * 101);
-    return randomNumber;
-  };
   do {
-    const n1 = getRandomNumber();
-    const n2 = getRandomNumber();
-    const op = getRandomOperation();
+    const n1 = getRandomNumber(101);
+    const n2 = getRandomNumber(101);
+    const op = operations[getRandomNumber(3)];
     const question = `${n1} ${op} ${n2}`;
-    const userAnswer = askQgetA(question);
+    const userAnswer = parseInt(askQgetA(question), 10);
     let rightAnswer;
     switch (op) {
       case '+': rightAnswer = n1 + n2;
@@ -31,13 +23,7 @@ export default () => {
         break;
       default:
     }
-    if (isAnswerRight(parseInt(userAnswer, 10), rightAnswer)) {
-      console.log('Correct!');
-      winsCounter += 1;
-    } else {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
-      winsCounter = 0;
-    }
+    winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
   } while (winsCounter < 3);
   console.log(`Congratulations, ${userName}!`);
 };

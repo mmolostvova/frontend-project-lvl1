@@ -1,5 +1,5 @@
 import {
-  welcomeMessage, showRules, askQgetA, isAnswerRight,
+  welcomeMessage, showRules, askQgetA, isAnswerRight, getRandomNumber,
 } from '../index.js';
 
 export default () => {
@@ -7,16 +7,10 @@ export default () => {
   showRules('Answer "yes" if the number is even, otherwise answer "no".');
   let winsCounter = 0;
   do {
-    const randomNumber = Math.floor(Math.random() * 101);
+    const randomNumber = getRandomNumber(101);
     const userAnswer = askQgetA(randomNumber);
     const rightAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-    if (isAnswerRight(userAnswer, rightAnswer)) {
-      console.log('Correct!');
-      winsCounter += 1;
-    } else {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
-      winsCounter = 0;
-    }
+    winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
   } while (winsCounter < 3);
   console.log(`Congratulations, ${userName}!`);
 };
