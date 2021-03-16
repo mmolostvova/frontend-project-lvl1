@@ -6,5 +6,5 @@
 
 ### Github Actions:
 [![Github Actions](https://github.com/mmolostvova/frontend-project-lvl1/workflows/linter.yml/badge.svg)](https://github.com/mmolostvova/frontend-project-lvl1/actions)
-### Brain Even Game
-asciinema play /var/folders/my/wyt6jpn97cd6x84v4v6kyr_40000gn/T/tmphkjsqwja-ascii.cast
+### Brain Games
+[![asciicast](https://asciinema.org/a/U6dQ3duHxOD0HNie7DbbdTDDw.svg)](https://asciinema.org/a/U6dQ3duHxOD0HNie7DbbdTDDw)

@@ -11,13 +11,13 @@ brain-calc:
 	node bin/brain-calc.js
 
 brain-gcd:
-	node brain-gcd.js
+	node bin/brain-gcd.js
 
 brain-progression:
-	node brain-progression.js
+	node bin/brain-progression.js
 
 brain-prime:
-	node brain-prime.js
+	node bin/brain-prime.js
 
 publish:
 	npm publish --dry-run
