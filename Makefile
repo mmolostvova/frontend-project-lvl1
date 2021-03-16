@@ -10,7 +10,7 @@ brain-even:
 brain-calc:
 	node bin/brain-calc.js
 
-rain-gcd:
+brain-gcd:
 	node brain-gcd.js
 
 brain-progression:
