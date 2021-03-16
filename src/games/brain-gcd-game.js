@@ -13,8 +13,8 @@ export default () => {
     return x;
   };
   do {
-    const n1 = getRandomNumber(101);
-    const n2 = getRandomNumber(101);
+    const n1 = getRandomNumber(10);
+    const n2 = getRandomNumber(10);
     const question = `${n1} ${n2}`;
     const userAnswer = parseInt(askQgetA(question), 10);
     const rightAnswer = getGCD(n1, n2);

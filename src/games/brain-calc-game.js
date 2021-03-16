@@ -8,8 +8,8 @@ export default () => {
   let winsCounter = 0;
   const operations = ['+', '-', '*'];
   do {
-    const n1 = getRandomNumber(101);
-    const n2 = getRandomNumber(101);
+    const n1 = getRandomNumber(35);
+    const n2 = getRandomNumber(35);
     const op = operations[getRandomNumber(3)];
     const question = `${n1} ${op} ${n2}`;
     const userAnswer = parseInt(askQgetA(question), 10);

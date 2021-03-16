@@ -10,7 +10,7 @@ export default () => {
     const firstEl = getRandomNumber(20);
     const progression = new Array(10);
     progression[0] = firstEl;
-    const step = getRandomNumber(19);
+    const step = getRandomNumber(9);
     const randomIndex = getRandomNumber(10);
     for (let i = 1; i < 10; i += 1) {
       progression[i] = progression[i - 1] + step;

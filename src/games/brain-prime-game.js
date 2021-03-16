@@ -13,7 +13,7 @@ export default () => {
     return n > 1;
   };
   do {
-    const number = getRandomNumber(571);
+    const number = getRandomNumber(99);
     const userAnswer = askQgetA(number);
     const rightAnswer = isPrime(number) ? 'yes' : 'no';
     winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
