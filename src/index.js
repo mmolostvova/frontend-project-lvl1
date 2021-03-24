@@ -1,4 +1,4 @@
-import readline from 'readline-sync';
+import readline, { question } from 'readline-sync';
 
 export const welcomeMessage = () => {
   console.log('Welcome to the Brain Games!');
@@ -11,8 +11,9 @@ export const showRules = (rules) => {
   console.log(rules);
 };
 
-export const askQgetA = (question) => {
-  const userAnswer = readline.question(`Question: ${question}`);
+export const gameRound = (roundQuestion) => {
+  console.log(readline.question(`Question: ${roundQuestion}`));
+  const userAnswer = readline.question(roundQuestion);
   console.log(`Your answer: ${userAnswer}`);
   return userAnswer;
 };
@@ -28,8 +29,3 @@ export function isAnswerRight(userAnswer, rightAnswer, userName, n = 0) {
   }
   return winsCounter;
 }
-
-export const getRandomNumber = (n) => {
-  const randomNumber = Math.floor(Math.random() * n);
-  return randomNumber;
-};
