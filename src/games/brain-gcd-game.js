@@ -1,24 +1,27 @@
-import {
-  welcomeMessage, showRules, askQgetA, isAnswerRight, getRandomNumber,
-} from '../index.js';
+import readline from 'readline-sync';
+
+import { getRandomNumber, getGCD } from '../cli.js';
 
 export default () => {
-  const userName = welcomeMessage();
-  showRules('Find the greatest common divisor of given numbers.');
-  let winsCounter = 0;
-  const getGCD = (n1, n2) => {
-    let x = n1;
-    let y = n2;
-    while (y !== 0) y = x % (x = y);
-    return x;
-  };
-  do {
-    const n1 = getRandomNumber(10);
-    const n2 = getRandomNumber(10);
-    const question = `${n1} ${n2}`;
-    const userAnswer = parseInt(askQgetA(question), 10);
-    const rightAnswer = getGCD(n1, n2);
-    winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
-  } while (winsCounter < 3);
+  console.log('Welcome to the Brain Games!');
+  const userName = readline.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Find the greatest common divisor of given numbers.');
+
+  for (let i = 0; i < 3; i += 1) {
+    const number1 = getRandomNumber(10);
+    const number2 = getRandomNumber(10);
+    console.log(`Question: ${number1} ${number2}`);
+    const userAnswer = readline.question('Your answer: ');
+    const rightAnswer = getGCD(number1, number2).toString();
+
+    if (userAnswer !== rightAnswer) {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
+      return;
+    }
+
+    console.log('Correct!');
+  }
+
   console.log(`Congratulations, ${userName}!`);
 };

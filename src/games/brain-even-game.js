@@ -1,32 +1,28 @@
-import {
-  welcomeMessage, showRules, gameRound, isAnswerRight,
-} from '../index.js';
-import getRandomNumber from '../cli'
+import readline from 'readline-sync';
+
+import getRandomNumber from '../cli.js';
+
+const isEven = (number) => number % 2 === 0;
 
 export default () => {
-  const userName = welcomeMessage();
-  showRules('Answer "yes" if the number is even, otherwise answer "no".');
-  const question1 = getRandomNumber(101);
-  const rightAnswer = question1 % 2 === 0 ? 'yes' : 'no';
-  const userAnswer = gameRound(question1);
-  if (userAnswer === rightAnswer) {
-    i = 0;
-  }
-  isAnswerRight(userAnswer, rightAnswer, userName);
-};
-console.log(`Congratulations, ${userName}!`);
+  console.log('Welcome to the Brain Games!');
+  const userName = readline.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-// export default () => {
-//   const userName = welcomeMessage();
-//   showRules('Answer "yes" if the number is even, otherwise answer "no".');
-//   for (let i = 0; i < 3; i += 1) {
-//     const randomNumber = getRandomNumber(101);
-//     const userAnswer = askQgetA(randomNumber);
-//     const rightAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-//     if (userAnswer !== rightAnswer) {
-//       i = 0;
-//     }
-//     isAnswerRight(userAnswer, rightAnswer, userName);
-//   }
-//   console.log(`Congratulations, ${userName}!`);
-// };
+  for (let i = 0; i < 3; i += 1) {
+    const randomNumber = getRandomNumber(101);
+    console.log(`Question: ${randomNumber}`);
+    const userAnswer = readline.question('Your answer: ');
+    const rightAnswer = isEven(randomNumber) ? 'yes' : 'no';
+
+    if (userAnswer !== rightAnswer) {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
+      return;
+    }
+
+    console.log('Correct!');
+  }
+
+  console.log(`Congratulations, ${userName}!`);
+};

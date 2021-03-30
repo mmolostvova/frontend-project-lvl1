@@ -1,24 +1,27 @@
-import {
-  welcomeMessage, showRules, askQgetA, isAnswerRight, getRandomNumber,
-} from '../index.js';
+import readline from 'readline-sync';
+
+import { getRandomNumber, createProgression } from '../cli.js';
 
 export default () => {
-  const userName = welcomeMessage();
-  showRules('What number is missing in the progression?');
-  let winsCounter = 0;
-  do {
-    const firstEl = getRandomNumber(20);
-    const progression = new Array(10);
-    progression[0] = firstEl;
-    const step = getRandomNumber(9);
-    const randomIndex = getRandomNumber(10);
-    for (let i = 1; i < 10; i += 1) {
-      progression[i] = progression[i - 1] + step;
+  console.log('Welcome to the Brain Games!');
+  const userName = readline.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('What number is missing in the progression?');
+
+  for (let i = 0; i < 3; i += 1) {
+    const numbers = createProgression();
+    const cutNumber = numbers.splice(getRandomNumber(10), 1, '..');
+    console.log(`Question: ${numbers}`);
+    const userAnswer = readline.question('Your answer: ');
+    const rightAnswer = cutNumber.join();
+
+    if (userAnswer !== rightAnswer) {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
+      return;
     }
-    const cut = progression.splice(randomIndex, 1, '..');
-    const rightAnswer = cut[0];
-    const userAnswer = parseInt(askQgetA(progression), 10);
-    winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
-  } while (winsCounter < 3);
+
+    console.log('Correct!');
+  }
+
   console.log(`Congratulations, ${userName}!`);
 };

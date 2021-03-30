@@ -1,29 +1,32 @@
-import {
-  welcomeMessage, showRules, askQgetA, isAnswerRight, getRandomNumber,
-} from '../index.js';
+import readline from 'readline-sync';
+
+import { getRandomNumber, getExampleSolution } from '../cli.js';
+
+const operations = ['+', '-', '*'];
 
 export default () => {
-  const userName = welcomeMessage();
-  showRules('What is the result of the expression?');
-  let winsCounter = 0;
-  const operations = ['+', '-', '*'];
-  do {
-    const n1 = getRandomNumber(35);
-    const n2 = getRandomNumber(35);
-    const op = operations[getRandomNumber(3)];
-    const question = `${n1} ${op} ${n2}`;
-    const userAnswer = parseInt(askQgetA(question), 10);
-    let rightAnswer;
-    switch (op) {
-      case '+': rightAnswer = n1 + n2;
-        break;
-      case '-': rightAnswer = n1 - n2;
-        break;
-      case '*': rightAnswer = n1 * n2;
-        break;
-      default:
+  console.log('Welcome to the Brain Games!');
+  const userName = readline.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('What is the result of the expression?');
+
+  for (let i = 0; i < 3; i += 1) {
+    const firstNumber = getRandomNumber(35);
+    const secondNumber = getRandomNumber(35);
+    const operation = operations[getRandomNumber(3)];
+    const example = `${firstNumber} ${operation} ${secondNumber}`;
+
+    console.log(`Question: ${example}`);
+    const userAnswer = readline.question('Your answer: ');
+    const rightAnswer = getExampleSolution(firstNumber, secondNumber, operation).toString();
+
+    if (userAnswer !== rightAnswer) {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
+      return;
     }
-    winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
-  } while (winsCounter < 3);
+
+    console.log('Correct!');
+  }
+
   console.log(`Congratulations, ${userName}!`);
 };

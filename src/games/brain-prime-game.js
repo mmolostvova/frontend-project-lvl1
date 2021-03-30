@@ -1,22 +1,26 @@
-import {
-  welcomeMessage, showRules, askQgetA, isAnswerRight, getRandomNumber,
-} from '../index.js';
+import readline from 'readline-sync';
+
+import { getRandomNumber, isPrime } from '../cli.js';
 
 export default () => {
-  const userName = welcomeMessage();
-  showRules('Answer "yes" if given number is prime. Otherwise answer "no".');
-  let winsCounter = 0;
-  const isPrime = (n) => {
-    for (let i = 2; i < n; i += 1) {
-      if (n % i === 0) return false;
-    }
-    return n > 1;
-  };
-  do {
+  console.log('Welcome to the Brain Games!');
+  const userName = readline.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+  for (let i = 0; i < 3; i += 1) {
     const number = getRandomNumber(99);
-    const userAnswer = askQgetA(number);
+    console.log(`Question: ${number}`);
+    const userAnswer = readline.question('Your answer: ');
     const rightAnswer = isPrime(number) ? 'yes' : 'no';
-    winsCounter = isAnswerRight(userAnswer, rightAnswer, userName, winsCounter);
-  } while (winsCounter < 3);
+
+    if (userAnswer !== rightAnswer) {
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
+      return;
+    }
+
+    console.log('Correct!');
+  }
+
   console.log(`Congratulations, ${userName}!`);
 };
