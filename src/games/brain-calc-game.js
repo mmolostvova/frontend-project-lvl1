@@ -1,6 +1,6 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, getExampleSolution } from '../cli.js';
+import { getRandomNumber, getExampleSolution } from '../calculations.js';
 
 const operations = ['+', '-', '*'];
 

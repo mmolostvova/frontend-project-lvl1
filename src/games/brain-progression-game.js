@@ -1,6 +1,6 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, createProgression } from '../cli.js';
+import { getRandomNumber, createProgression } from '../calculations.js';
 
 export default () => {
   console.log('Welcome to the Brain Games!');

@@ -1,6 +1,6 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, isPrime } from '../cli.js';
+import { getRandomNumber, isPrime } from '../calculations.js';
 
 export default () => {
   console.log('Welcome to the Brain Games!');
