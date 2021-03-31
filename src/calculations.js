@@ -7,7 +7,7 @@ export const createProgression = () => {
   const firstEl = getRandomNumber(20);
   const progression = new Array(10);
   progression[0] = firstEl;
-  const step = getRandomNumber(9);
+  const step = getRandomNumber(9) + 1;
   for (let i = 1; i < 10; i += 1) {
     progression[i] = progression[i - 1] + step;
   }

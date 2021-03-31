@@ -11,7 +11,7 @@ export default () => {
   for (let i = 0; i < 3; i += 1) {
     const numbers = createProgression();
     const cutNumber = numbers.splice(getRandomNumber(10), 1, '..');
-    console.log(`Question: ${numbers}`);
+    console.log(`Question: ${numbers.join(' ')}`);
     const userAnswer = readline.question('Your answer: ');
     const rightAnswer = cutNumber.join();
 
