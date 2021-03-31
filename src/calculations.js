@@ -1,4 +1,4 @@
-const getRandomNumber = (maxNumber) => {
+export const getRandomNumber = (maxNumber) => {
   const randomNumber = Math.floor(Math.random() * maxNumber);
   return randomNumber;
 };
@@ -45,5 +45,3 @@ export const getGCD = (n1, n2) => {
   }
   return x;
 };
-
-export default getRandomNumber;
