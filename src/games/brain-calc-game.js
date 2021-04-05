@@ -5,19 +5,16 @@ import getRandomNumber from '../calculations.js';
 const operations = ['+', '-', '*'];
 
 const makeCalculations = (firstNumber, secondNumber, operation) => {
-  let solution;
-
-  switch (operation) {
-    case '+': solution = firstNumber + secondNumber;
-      break;
-    case '-': solution = firstNumber - secondNumber;
-      break;
-    case '*': solution = firstNumber * secondNumber;
-      break;
-    default:
+  if (operation === '+') {
+    return firstNumber + secondNumber;
   }
-
-  return solution;
+  if (operation === '-') {
+    return firstNumber - secondNumber;
+  }
+  if (operation === '*') {
+    return firstNumber * secondNumber;
+  }
+  return undefined;
 };
 
 export default () => {
