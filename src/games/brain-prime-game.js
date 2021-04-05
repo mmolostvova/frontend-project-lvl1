@@ -1,6 +1,13 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, isPrime } from '../calculations.js';
+import getRandomNumber from '../calculations.js';
+
+const isPrime = (n) => {
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) return false;
+  }
+  return n > 1;
+};
 
 export default () => {
   console.log('Welcome to the Brain Games!');

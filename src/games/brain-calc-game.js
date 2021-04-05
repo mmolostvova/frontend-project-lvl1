@@ -1,8 +1,24 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, getExampleSolution } from '../calculations.js';
+import getRandomNumber from '../calculations.js';
 
 const operations = ['+', '-', '*'];
+
+const makeCalculations = (firstNumber, secondNumber, operation) => {
+  let solution;
+
+  switch (operation) {
+    case '+': solution = firstNumber + secondNumber;
+      break;
+    case '-': solution = firstNumber - secondNumber;
+      break;
+    case '*': solution = firstNumber * secondNumber;
+      break;
+    default:
+  }
+
+  return solution;
+};
 
 export default () => {
   console.log('Welcome to the Brain Games!');
@@ -18,7 +34,7 @@ export default () => {
 
     console.log(`Question: ${example}`);
     const userAnswer = readline.question('Your answer: ');
-    const rightAnswer = getExampleSolution(firstNumber, secondNumber, operation).toString();
+    const rightAnswer = makeCalculations(firstNumber, secondNumber, operation).toString();
 
     if (userAnswer !== rightAnswer) {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);

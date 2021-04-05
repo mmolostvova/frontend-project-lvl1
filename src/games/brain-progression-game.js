@@ -1,6 +1,17 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, createProgression } from '../calculations.js';
+import getRandomNumber from '../calculations.js';
+
+const createProgression = (progressionLength) => {
+  const firstEl = getRandomNumber(20);
+  const progression = new Array(progressionLength);
+  progression[0] = firstEl;
+  const step = getRandomNumber(9) + 1;
+  for (let i = 1; i < progressionLength; i += 1) {
+    progression[i] = progression[i - 1] + step;
+  }
+  return progression;
+};
 
 export default () => {
   console.log('Welcome to the Brain Games!');
@@ -9,7 +20,7 @@ export default () => {
   console.log('What number is missing in the progression?');
 
   for (let i = 0; i < 3; i += 1) {
-    const numbers = createProgression();
+    const numbers = createProgression(10);
     const cutNumber = numbers.splice(getRandomNumber(10), 1, '..');
     console.log(`Question: ${numbers.join(' ')}`);
     const userAnswer = readline.question('Your answer: ');

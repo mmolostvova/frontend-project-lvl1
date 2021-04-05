@@ -1,6 +1,15 @@
 import readline from 'readline-sync';
 
-import { getRandomNumber, getGCD } from '../calculations.js';
+import getRandomNumber from '../calculations.js';
+
+const getGCD = (n1, n2) => {
+  let x = n1;
+  let y = n2;
+  while (y !== 0) {
+    y = x % (x = y);
+  }
+  return x;
+};
 
 export default () => {
   console.log('Welcome to the Brain Games!');
