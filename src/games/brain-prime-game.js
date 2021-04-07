@@ -11,6 +11,7 @@ const isPrime = (n) => {
       return false;
     }
   }
+  return true;
 };
 
 export default () => {
