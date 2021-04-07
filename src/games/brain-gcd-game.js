@@ -2,13 +2,11 @@ import readline from 'readline-sync';
 
 import getRandomNumber from '../calculations.js';
 
-const getGCD = (n1, n2) => {
-  let x = n1;
-  let y = n2;
-  while (y !== 0) {
-    y = x % (x = y);
+const getGCD = (a, b) => {
+  if (!b) {
+    return a;
   }
-  return x;
+  return getGCD(b, a % b);
 };
 
 export default () => {
