@@ -21,10 +21,12 @@ export default () => {
 
   for (let i = 0; i < 3; i += 1) {
     const numbers = createProgression(10);
-    const cutNumber = numbers.splice(getRandomNumber(10), 1, '..');
+    const indexOfEmptyElement = getRandomNumber(10);
+    const cutNumber = numbers[indexOfEmptyElement];
+    numbers.splice(indexOfEmptyElement, 1, '..');
     console.log(`Question: ${numbers.join(' ')}`);
     const userAnswer = readline.question('Your answer: ');
-    const rightAnswer = cutNumber.join();
+    const rightAnswer = cutNumber.toString();
 
     if (userAnswer !== rightAnswer) {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);

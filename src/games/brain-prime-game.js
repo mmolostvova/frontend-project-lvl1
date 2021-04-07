@@ -3,10 +3,14 @@ import readline from 'readline-sync';
 import getRandomNumber from '../calculations.js';
 
 const isPrime = (n) => {
-  for (let i = 2; i < n; i += 1) {
-    if (n % i === 0) return false;
+  if (n === 1) {
+    return true;
   }
-  return n > 1;
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
 };
 
 export default () => {
