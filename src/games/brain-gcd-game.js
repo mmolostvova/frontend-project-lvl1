@@ -1,13 +1,8 @@
 import readline from 'readline-sync';
 
-import getRandomNumber from '../calculations.js';
+import getRandomNumber from '../utils.js';
 
-const getGCD = (a, b) => {
-  if (!b) {
-    return a;
-  }
-  return getGCD(b, a % b);
-};
+const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
 
 export default () => {
   console.log('Welcome to the Brain Games!');
@@ -16,8 +11,8 @@ export default () => {
   console.log('Find the greatest common divisor of given numbers.');
 
   for (let i = 0; i < 3; i += 1) {
-    const number1 = getRandomNumber(10);
-    const number2 = getRandomNumber(10);
+    const number1 = getRandomNumber(1, 15);
+    const number2 = getRandomNumber(1, 15);
     console.log(`Question: ${number1} ${number2}`);
     const userAnswer = readline.question('Your answer: ');
     const rightAnswer = getGCD(number1, number2).toString();

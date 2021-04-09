@@ -1,12 +1,12 @@
 import readline from 'readline-sync';
 
-import getRandomNumber from '../calculations.js';
+import getRandomNumber from '../utils.js';
 
 const createProgression = (progressionLength) => {
-  const firstEl = getRandomNumber(20);
+  const firstEl = getRandomNumber(20, 40);
   const progression = new Array(progressionLength);
   progression[0] = firstEl;
-  const step = getRandomNumber(9) + 1;
+  const step = getRandomNumber(5, 14);
   for (let i = 1; i < progressionLength; i += 1) {
     progression[i] = progression[i - 1] + step;
   }
@@ -21,7 +21,7 @@ export default () => {
 
   for (let i = 0; i < 3; i += 1) {
     const numbers = createProgression(10);
-    const indexOfEmptyElement = getRandomNumber(10);
+    const indexOfEmptyElement = getRandomNumber(-1, 9);
     const cutNumber = numbers[indexOfEmptyElement];
     numbers.splice(indexOfEmptyElement, 1, '..');
     console.log(`Question: ${numbers.join(' ')}`);

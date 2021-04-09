@@ -1,20 +1,22 @@
 import readline from 'readline-sync';
 
-import getRandomNumber from '../calculations.js';
+import getRandomNumber from '../utils.js';
 
 const operations = ['+', '-', '*'];
 
 const makeCalculations = (firstNumber, secondNumber, operation) => {
-  if (operation === '+') {
-    return firstNumber + secondNumber;
+  let solution;
+  switch (operation) {
+    case '+': solution = firstNumber + secondNumber;
+      break;
+    case '-': solution = firstNumber - secondNumber;
+      break;
+    case '*': solution = firstNumber * secondNumber;
+      break;
+    default:
+      throw new Error('Something went wrong with calculations!');
   }
-  if (operation === '-') {
-    return firstNumber - secondNumber;
-  }
-  if (operation === '*') {
-    return firstNumber * secondNumber;
-  }
-  return undefined;
+  return solution;
 };
 
 export default () => {
@@ -24,9 +26,9 @@ export default () => {
   console.log('What is the result of the expression?');
 
   for (let i = 0; i < 3; i += 1) {
-    const firstNumber = getRandomNumber(35);
-    const secondNumber = getRandomNumber(35);
-    const operation = operations[getRandomNumber(3)];
+    const firstNumber = getRandomNumber(11, 35);
+    const secondNumber = getRandomNumber(11, 35);
+    const operation = operations[getRandomNumber(0, 2)];
     const example = `${firstNumber} ${operation} ${secondNumber}`;
 
     console.log(`Question: ${example}`);

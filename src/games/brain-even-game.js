@@ -1,6 +1,6 @@
 import readline from 'readline-sync';
 
-import getRandomNumber from '../calculations.js';
+import getRandomNumber from '../utils.js';
 
 const isEven = (number) => number % 2 === 0;
 
@@ -11,7 +11,7 @@ export default () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomNumber(101);
+    const randomNumber = getRandomNumber(45, 101);
     console.log(`Question: ${randomNumber}`);
     const userAnswer = readline.question('Your answer: ');
     const rightAnswer = isEven(randomNumber) ? 'yes' : 'no';
