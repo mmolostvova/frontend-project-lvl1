@@ -1,40 +1,34 @@
-import readline from 'readline-sync';
-
+import game from '../gameEngine.js';
 import getRandomNumber from '../utils.js';
 
-const createProgression = (progressionLength) => {
-  const firstEl = getRandomNumber(20, 40);
-  const progression = new Array(progressionLength);
-  progression[0] = firstEl;
-  const step = getRandomNumber(5, 14);
-  for (let i = 1; i < progressionLength; i += 1) {
-    progression[i] = progression[i - 1] + step;
-  }
-  return progression;
-};
-
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readline.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('What number is missing in the progression?');
-
-  for (let i = 0; i < 3; i += 1) {
+  const rules = 'What number is missing in the progression?';
+  
+  const getQuestion = () => {
+    const createProgression = (progressionLength) => {
+      const firstEl = getRandomNumber(20, 40);
+      const progression = new Array(progressionLength);
+      progression[0] = firstEl;
+      const step = getRandomNumber(5, 14);
+      for (let i = 1; i < progressionLength; i += 1) {
+        progression[i] = progression[i - 1] + step;
+      }
+      return progression;
+    };
     const numbers = createProgression(10);
-    const indexOfEmptyElement = getRandomNumber(-1, 9);
-    const cutNumber = numbers[indexOfEmptyElement];
+    const indexOfEmptyElement = getRandomNumber(1, 8);
     numbers.splice(indexOfEmptyElement, 1, '..');
-    console.log(`Question: ${numbers.join(' ')}`);
-    const userAnswer = readline.question('Your answer: ');
-    const rightAnswer = cutNumber.toString();
 
-    if (userAnswer !== rightAnswer) {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
-      return;
-    }
+    return numbers.join(' ');
+  };
 
-    console.log('Correct!');
-  }
+  const getRightAnswer = (question) => {
+    const numbers = question.split(' ');
+    const i = numbers.indexOf('..');
+    const step = (numbers[i + 1] - numbers[i - 1]) / 2;
+    const cutNumber = Number(numbers[i - 1]) + Number(step);
+    return cutNumber.toString();
+  };
 
-  console.log(`Congratulations, ${userName}!`);
+  game(rules, getQuestion, getRightAnswer);
 };

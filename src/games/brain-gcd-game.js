@@ -1,29 +1,20 @@
-import readline from 'readline-sync';
-
+import game from '../gameEngine.js';
 import getRandomNumber from '../utils.js';
 
-const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
-
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readline.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('Find the greatest common divisor of given numbers.');
+  const rules = 'Find the greatest common divisor of given numbers.';
 
-  for (let i = 0; i < 3; i += 1) {
+  const getQuestion = () => {
     const number1 = getRandomNumber(1, 15);
     const number2 = getRandomNumber(1, 15);
-    console.log(`Question: ${number1} ${number2}`);
-    const userAnswer = readline.question('Your answer: ');
-    const rightAnswer = getGCD(number1, number2).toString();
+    return `${number1} ${number2}`;
+  };
 
-    if (userAnswer !== rightAnswer) {
-      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}. Let's try again, ${userName}!`);
-      return;
-    }
+  const getRightAnswer = (question) => {
+    const numbers = question.split(' ');
+    const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
+    return getGCD(numbers[0], numbers[1]).toString();
+  };
 
-    console.log('Correct!');
-  }
-
-  console.log(`Congratulations, ${userName}!`);
+  game(rules, getQuestion, getRightAnswer);
 };
