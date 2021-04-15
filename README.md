@@ -5,14 +5,20 @@
 [![Github Actions](https://github.com/mmolostvova/frontend-project-lvl1/workflows/Linter/badge.svg)](https://github.com/mmolostvova/frontend-project-lvl1/actions)
 
 ### Setup
+```
 $ make install
+```
 ### Lint
+```
 $ make lint
+```
 ### Run
+```
 $ make brain-even
 $ make brain-calc
 $ make brain-gcd
 $ make brain-progression
 $ make brain-prime
+```
 ### Games flow
 [![asciicast](https://asciinema.org/a/U6dQ3duHxOD0HNie7DbbdTDDw.svg)](https://asciinema.org/a/U6dQ3duHxOD0HNie7DbbdTDDw)
