@@ -3,7 +3,7 @@ import getRandomNumber from '../utils.js';
 
 export default () => {
   const rules = 'What number is missing in the progression?';
-  
+
   const getQuestion = () => {
     const createProgression = (progressionLength) => {
       const firstEl = getRandomNumber(20, 40);
