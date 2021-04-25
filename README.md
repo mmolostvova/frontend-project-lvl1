@@ -21,4 +21,4 @@ $ make brain-progression
 $ make brain-prime
 ```
 ### Games flow
-[![asciicast](https://asciinema.org/a/U6dQ3duHxOD0HNie7DbbdTDDw.svg)](https://asciinema.org/a/Lqwd1YnQUPAtwh6xeSrbdK6pC)
+[![asciicast](https://asciinema.org/a/Lqwd1YnQUPAtwh6xeSrbdK6pC.svg)](https://asciinema.org/a/Lqwd1YnQUPAtwh6xeSrbdK6pC)
