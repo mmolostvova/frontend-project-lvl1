@@ -1,4 +1,4 @@
-import game from '../index.js';
+import play from '../index.js';
 import getRandomNumber from '../utils.js';
 
 const operations = ['+', '-', '*'];
@@ -12,12 +12,12 @@ const calculate = (firstNumber, secondNumber, operation) => {
     case '*':
       return firstNumber * secondNumber;
     default:
-      throw new Error('Something went wrong with calculations!');
+      throw new Error(`Unknown operation: '${operation}'.`);
   }
 };
 
 export default () => {
-  const rules = 'What is the result of the expression?';
+  const description = 'What is the result of the expression?';
 
   const generateRound = () => {
     const firstNumber = getRandomNumber(11, 35);
@@ -31,5 +31,5 @@ export default () => {
     };
   };
 
-  game(rules, generateRound);
+  play(description, generateRound);
 };
